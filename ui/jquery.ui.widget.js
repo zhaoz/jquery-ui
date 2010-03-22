@@ -205,6 +205,12 @@ $.Widget.prototype = {
 	disable: function() {
 		return this._setOption( "disabled", true );
 	},
+	
+	_bind: function() {
+		// TODO figure out which element to bind to: this.element, if none specified
+		// TODO append widget namespace to all event names
+		// TODO set the scope of the callback to the instance (this here)
+	},
 
 	_trigger: function( type, event, data ) {
 		var callback = this.options[ type ];
