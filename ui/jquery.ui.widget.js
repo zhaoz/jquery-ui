@@ -210,6 +210,26 @@ $.Widget.prototype = {
 		// TODO figure out which element to bind to: this.element, if none specified
 		// TODO append widget namespace to all event names
 		// TODO set the scope of the callback to the instance (this here)
+		// TODO extend destroy to unbind all events to elements other then this.element
+		
+		// usage: bind to this.element
+		this._bind({
+			mouseover: function(event) {
+				this.show(event.currentTarget)
+			},
+			mouseout: function(event) {
+				this.hide(event.currentTarget);
+			}
+		});
+		// usage: bind to a specified element
+		this._bind(this.element.find(".headers"), {
+			mouseover: function(event) {
+				this.show(event.currentTarget)
+			},
+			mouseout: function(event) {
+				this.hide(event.currentTarget);
+			}
+		});
 	},
 
 	_trigger: function( type, event, data ) {
